@@ -88,6 +88,8 @@ class ImageSlider extends Component<PropsType, StateType> {
       index < this.props.images.length &&
       index > -1
     ) {
+            this.setState({ position: index });
+
       this.props.onPositionChanged(index);
       this.setState({ onPositionChangedCalled: true });
     }
@@ -96,9 +98,11 @@ class ImageSlider extends Component<PropsType, StateType> {
   };
 
   _getPosition() {
+
     if (typeof this.props.position === 'number') {
       return this.props.position;
-    }
+    }     
+
     return this.state.position;
   }
 
@@ -120,13 +124,15 @@ class ImageSlider extends Component<PropsType, StateType> {
     if (autoPlayWithInterval) {
       this.setState({
         interval: setInterval(
-          () =>
+          () =>{
+            if((loop || loopBothSides) && this.state.position >= images.length-1){
+              this._move(0);
+            }else{
             this._move(
-              !(loop || loopBothSides) &&
-              this.state.position === images.length - 1
-                ? 0
-                : this.state.position + 1,
-            ),
+                this.state.position + 1
+            )}
+
+            },
           autoPlayWithInterval,
         ),
       });
@@ -140,17 +146,17 @@ class ImageSlider extends Component<PropsType, StateType> {
 
     if (
       (loop || loopBothSides) &&
-      x.toFixed() >= +(width * images.length).toFixed()
+      x.toFixed() >= +(this.props.imagesWidth * images.length).toFixed()
     ) {
-      return this._move(0, false);
-    } else if (loopBothSides && x.toFixed() <= +(-width).toFixed()) {
-      return this._move(images.length - 1, false);
+      return this._move(0, true);
+    } else if (loopBothSides && x.toFixed() <= +(-this.props.imagesWidth).toFixed()) {
+      return this._move(images.length - 1, true);
     }
 
     let newPosition = 0;
 
     if (position !== -1 && position !== images.length) {
-      newPosition = Math.round(event.nativeEvent.contentOffset.x / width);
+      newPosition = Math.round(event.nativeEvent.contentOffset.x / this.props.imagesWidth);
       this.setState({ position: newPosition });
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-native-image-slider-ms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a forked repo from Paul Sauve A easy to use image slider for React Native",
   "main": "ImageSlider.js",
   "author": {

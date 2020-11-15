@@ -171,6 +171,7 @@ class ImageSlider extends Component<PropsType, StateType> {
       this.setState({ onPositionChangedCalled: false });
     }
 
+    this._clearInterval();
     this._setInterval();
   };
 

@@ -1,23 +1,25 @@
 {
-  "name": "react-native-image-slider",
-  "version": "2.0.4",
-  "description": "A easy to use image slider for React Native",
+  "name": "react-native-image-slider-ms",
+  "version": "1.0.0",
+  "description": "This is a forked repo from Paul Sauve A easy to use image slider for React Native",
   "main": "ImageSlider.js",
   "author": {
-    "name": "Paul Sauve",
-    "email": "paul@burngames.net",
-    "url": "https://paulb.gd"
+    "name": "Mohammd Ali Smadi",
+    "email": "mhammdsmadi@gmail.com"
   },
   "contributors": [
     {
       "name": "Artiom Shapovalov",
       "email": "vaomamago@gmail.com"
+    },{
+      "name": "Mohammd Ali Smadi",
+      "email": "mhammdsmadi@gmail.com"
     }
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaulBGD/react-native-image-slider"
+    "url": "https://github.com/mohammdsmadi/react-native-image-slider"
   },
   "peerDependencies": {
     "react-native": "*"
